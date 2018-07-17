@@ -320,10 +320,10 @@ public class MultiPanel extends JPanel {
                     addScore(SCORE);
                     
                     Arrays.sort(HIGHSCORES);
-                    MainWindow mw = new MainWindow();
+                    MainMenuPanel mw = new MainMenuPanel();
                     
                 } catch (IOException ex) {
-                    Logger.getLogger(HighScoreWindow.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(HighScorePanel.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
             

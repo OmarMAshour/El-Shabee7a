@@ -6,34 +6,34 @@ import javax.swing.*;
 public class Screen {
 
     private GraphicsDevice vc;
-    
-    public Screen(){
+
+    public Screen() {
         GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
         vc = env.getDefaultScreenDevice();
     }
-    
-    public void setFullScreen(DisplayMode dm, JFrame window){
+
+    public void setFullScreen(DisplayMode dm, JFrame window) {
         window.setUndecorated(true);
         window.setResizable(false);
         vc.setFullScreenWindow(window);
-        
-        if(dm!=null && vc.isDisplayChangeSupported()){
-            try{
+
+        if (dm != null && vc.isDisplayChangeSupported()) {
+            try {
                 vc.setDisplayMode(dm);
-            }catch (Exception e){}
+            } catch (Exception e) {
+            }
         }
-    
-    
+
     }
-    
-    public Window getFullScreenWindow(){
+
+    public Window getFullScreenWindow() {
         return vc.getFullScreenWindow();
     }
-    
-    public void restoreScreen(){
+
+    public void restoreScreen() {
         Window w = vc.getFullScreenWindow();
-        
-        if ( w != null){
+
+        if (w != null) {
             w.dispose();
         }
         vc.setFullScreenWindow(null);

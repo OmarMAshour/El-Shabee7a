@@ -78,9 +78,9 @@ public class SelectMap_Multi extends JFrame {
             public void mouseClicked(MouseEvent me) {
                 dispose();
                 try {
-                    MainWindow mw = new MainWindow();
+                    MainMenuPanel mw = new MainMenuPanel();
                 } catch (IOException ex) {
-                    Logger.getLogger(HighScoreWindow.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(HighScorePanel.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
 
@@ -108,7 +108,7 @@ public class SelectMap_Multi extends JFrame {
 
                     MultiBoard gb = new MultiBoard();
                 } catch (IOException ex) {
-                    Logger.getLogger(HighScoreWindow.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(HighScorePanel.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
 
@@ -136,7 +136,7 @@ public class SelectMap_Multi extends JFrame {
                     ASU_BACKGROUND = true;
                     MultiBoard gb = new MultiBoard();
                 } catch (IOException ex) {
-                    Logger.getLogger(HighScoreWindow.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(HighScorePanel.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
 

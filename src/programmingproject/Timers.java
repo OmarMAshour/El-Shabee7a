@@ -9,8 +9,6 @@ import static programmingproject.ProgrammingProject.*;
 import java.util.TimerTask;
 import java.util.Timer;
 import java.awt.Image;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
@@ -55,24 +53,24 @@ public class Timers {
     }
 
     public void setTimerImage() {
-        
-        if(TIME_ENDS == false){
-        if (getRight() == RightCounter[0] && getLeft() == LeftCounter[0]) {
 
-            R = 0;
-            L = 0;
-            TIME_ENDS = true;
-        } else if (R != 0) {
-            RightTemp = RightCounter[--R];
-            TIME_COUNTER++;
+        if (TIME_ENDS == false) {
+            if (getRight() == RightCounter[0] && getLeft() == LeftCounter[0]) {
 
-        } else {
-            LeftTemp = LeftCounter[--L];
-            R = 9;
-            RightTemp = RightCounter[9];
-            TIME_COUNTER++;
+                R = 0;
+                L = 0;
+                TIME_ENDS = true;
+            } else if (R != 0) {
+                RightTemp = RightCounter[--R];
+                TIME_COUNTER++;
 
-        }
+            } else {
+                LeftTemp = LeftCounter[--L];
+                R = 9;
+                RightTemp = RightCounter[9];
+                TIME_COUNTER++;
+
+            }
         }
     }
 

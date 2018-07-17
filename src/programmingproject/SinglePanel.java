@@ -5,7 +5,6 @@ import java.util.Arrays;
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -13,7 +12,6 @@ import java.io.InputStream;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.imageio.ImageIO;
 import static programmingproject.ProgrammingProject.*;
 import java.util.TimerTask;
 import sun.audio.AudioPlayer;
@@ -25,7 +23,6 @@ public class SinglePanel extends JPanel {
     private BlackWidow blackwidow;
     private JLabel bkHolder;
     private ImageIcon background;
-    private Image hulkStable;
     private javax.swing.Timer timer;
     private java.util.Timer timer_util;
     private HulkHealth hulkhealth;
@@ -69,7 +66,6 @@ public class SinglePanel extends JPanel {
         timer_util = new java.util.Timer();
 
         timersphoto = new Timers();
-        // hulkStable = hulk.getNormalStateImage();
         hulk = new Hulk(WINDOW_WIDTH / 32, (4 * WINDOW_HEIGHT) / 9);
         blackwidow = new BlackWidow(WINDOW_WIDTH - ((WINDOW_WIDTH / 32) + HERO_WIDTH), (4 * WINDOW_HEIGHT) / 9);
 
@@ -387,10 +383,10 @@ public class SinglePanel extends JPanel {
                     addScore(SCORE);
 
                     Arrays.sort(HIGHSCORES);
-                    MainWindow mw = new MainWindow();
+                    MainMenuPanel mw = new MainMenuPanel();
 
                 } catch (IOException ex) {
-                    Logger.getLogger(HighScoreWindow.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(HighScorePanel.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
 
@@ -462,20 +458,15 @@ public class SinglePanel extends JPanel {
 
     public void checkBlackwidowHit() {
         if (blackwidow.getImage() == blackwidow.getImage3c() && hulk.getX() - blackwidow.getX() <= (220 * WINDOW_WIDTH) / 1920 && hulk.getX() - blackwidow.getX() > 0) {
-
-            //HULKBAR_NO++;
             BLACKWIDOW_HIT = true;
 
         } else if (blackwidow.getImage() == blackwidow.getImage3cINV() && blackwidow.getX() - hulk.getX() <= (220 * WINDOW_WIDTH) / 1920 && blackwidow.getX() - hulk.getX() > 0) {
             BLACKWIDOW_HIT = true;
-            //HULKBAR_NO++;
         } else if (blackwidow.getImage() == blackwidow.getImage4b() && hulk.getX() - blackwidow.getX() <= (223 * WINDOW_WIDTH) / 1920 && hulk.getX() - blackwidow.getX() > 0) {
             BLACKWIDOW_HIT = true;
-            //HULKBAR_NO++;
 
         } else if (blackwidow.getImage() == blackwidow.getImage4bINV() && blackwidow.getX() - hulk.getX() <= (223 * WINDOW_WIDTH) / 1920 && blackwidow.getX() - hulk.getX() > 0) {
             BLACKWIDOW_HIT = true;
-            //HULKBAR_NO++;
 
         } else if (blackwidow.getImage() == blackwidow.getImage4b() && hulk.getImage() == hulk.getImage1() && hulk.getX() - blackwidow.getX() <= (290 * WINDOW_WIDTH) / 1920 && hulk.getX() - blackwidow.getX() > 0) {
             BLACKWIDOW_HIT = true;
@@ -483,10 +474,8 @@ public class SinglePanel extends JPanel {
             BLACKWIDOW_HIT = true;
         } else if (blackwidow.getImage() == blackwidow.getImage3bINV() && hulk.getImage() == hulk.getImage1INV() && blackwidow.getX() - hulk.getX() <= (290 * WINDOW_WIDTH) / 1920 && hulk.getX() - blackwidow.getX() > 0) {
             BLACKWIDOW_HIT = true;
-            //HULKBAR_NO++;
         } else if (blackwidow.getImage() == blackwidow.getImage3b() && hulk.getImage() == hulk.getImage1() && (hulk.getX() - blackwidow.getX() <= (290 * WINDOW_WIDTH) / 1920) && hulk.getX() - blackwidow.getX() > 0) {
             BLACKWIDOW_HIT = true;
-            //HULKBAR_NO++;
         }
     }
 
