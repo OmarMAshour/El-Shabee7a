@@ -2,7 +2,6 @@ package programmingproject;
 
 import java.awt.Image;
 import java.awt.event.KeyEvent;
-import static java.awt.event.KeyEvent.*;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -10,7 +9,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.TimerTask;
 import javax.imageio.ImageIO;
-import javax.swing.Timer;
 import static programmingproject.ProgrammingProject.*;
 import sun.audio.AudioPlayer;
 import sun.audio.AudioStream;
@@ -52,7 +50,7 @@ public class BlackWidow {
     private Image blackwidowImage5bINV;
     private Image blackwidowImage5cINV;
 
-    private int BlackWidowFall =0;
+    private int BlackWidowFall = 0;
     private java.util.Timer timer;
 
     public BlackWidow(int x, int y) throws IOException {
@@ -99,7 +97,7 @@ public class BlackWidow {
     public void move() {
         if (W == false) {
             x += dx;
-        } else if (W == true && x < (WINDOW_WIDTH-HERO_WIDTH) && x>0) {
+        } else if (W == true && x < (WINDOW_WIDTH - HERO_WIDTH) && x > 0) {
             if ((y < WINDOW_HEIGHT / 2) && ((y + HERO_HEIGHT) < WINDOW_HEIGHT)) {
                 x += dx;
                 y += dy;
@@ -220,9 +218,16 @@ public class BlackWidow {
         temp = blackwidow;
     }
 
-    
+    private boolean hitting() {
+        if (getImage() == blackwidowImage1 || getImage() == blackwidowImage1INV || getImage() == blackwidowImage2a || getImage() == blackwidowImage2b || getImage() == blackwidowImage2aINV || getImage() == blackwidowImage2bINV) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
     public void moveBlackWidowUp() {
-        if (W == true) {
+        if (W == true && (!hitting())) {
             setImage(blackwidowImage5a);
             this.blackwidowMotioncount += 10;
             if (this.blackwidowMotioncount % 50 == 0) {
@@ -248,33 +253,33 @@ public class BlackWidow {
         if (W == true && D == true) {
             setImage(blackwidowImage5a);
 
-            if ((y > (WINDOW_HEIGHT / 2)-150)) {
-            this.blackwidowMotioncount += 10;
-            if (this.blackwidowMotioncount % 50 == 0) {
+            if ((y > (WINDOW_HEIGHT / 2) - 150)) {
+                this.blackwidowMotioncount += 10;
+                if (this.blackwidowMotioncount % 50 == 0) {
 
-                blackwidowMotioncount = 0;
+                    blackwidowMotioncount = 0;
 
-                if (BlackWidowFall <= 15) {
-                    dy = -20;
-                    dx = 20;
-                    move();
-                } else if (BlackWidowFall >= 16 && BlackWidowFall < 32) {
-                    dy = 20;
-                    dx = 20;
-                    move();
+                    if (BlackWidowFall <= 15) {
+                        dy = -20;
+                        dx = 20;
+                        move();
+                    } else if (BlackWidowFall >= 16 && BlackWidowFall < 32) {
+                        dy = 20;
+                        dx = 20;
+                        move();
+                    }
+
+                    if (BlackWidowFall >= 33) {
+                        dy = 0;
+                        move();
+                    }
+                    BlackWidowFall++;
                 }
-
-                if (BlackWidowFall >= 33) {
-                    dy = 0;
-                    move();
-                }
-                BlackWidowFall++;
             }
         }
-        }
         if (W == true && A == true) {
-                setImage(blackwidowImage5aINV);
-            if ((y > (WINDOW_HEIGHT / 2)-150)) {
+            setImage(blackwidowImage5aINV);
+            if ((y > (WINDOW_HEIGHT / 2) - 150)) {
                 this.blackwidowMotioncount += 10;
                 if (this.blackwidowMotioncount % 10 == 0) {
 
@@ -292,7 +297,7 @@ public class BlackWidow {
 
                     if (BlackWidowFall >= 33) {
                         dy = 0;
-                        dx=0;
+                        dx = 0;
                         move();
                     }
                     BlackWidowFall++;
@@ -303,8 +308,9 @@ public class BlackWidow {
 
         }
     }
+
     public void blackwidowMoveLeft() {
-        if (A == true) {
+        if (A == true && (!hitting())) {
             if ((x - 10) <= (0)) {
 
                 if (this.blackwidowMotioncount == 0) {
@@ -371,7 +377,7 @@ public class BlackWidow {
     }
 
     public void blackwidowMoveRight() {
-        if (D == true) {
+        if (D == true && (!hitting())) {
             if ((x + 10) >= (WINDOW_WIDTH - HERO_WIDTH)) {
 
                 if (this.blackwidowMotioncount == 0) {
@@ -438,15 +444,10 @@ public class BlackWidow {
     }
 
     public void keyPressed(KeyEvent e) throws IOException, InterruptedException {
-        // KP = true;
 
         int key = e.getKeyCode();
 
-//        if(key == KeyEvent.VK_SPACE){
-//            dy = 5;
-//        }
-        
-         if (key == KeyEvent.VK_W && TIME_ENDS == false) {
+        if (key == KeyEvent.VK_W && TIME_ENDS == false) {
             W = true;
 
         }
@@ -467,27 +468,31 @@ public class BlackWidow {
         int key = e.getKeyCode();
         this.blackwidowstate = 0;
         this.blackwidowMotioncount = 0;
-        
+
         if (key == KeyEvent.VK_W && TIME_ENDS == false) {
             W = false;
             BlackWidowFall = 0;
             y = (4 * WINDOW_HEIGHT) / 9;
             D = false;
             A = false;
-            if(getImage()==blackwidowImage5aINV){
+            if (getImage() == blackwidowImage5aINV) {
                 setImage(blackwidowImage1INV);
-            }
-            else
+            } else {
                 setImage(blackwidowImage1);
+            }
         }
         if (key == KeyEvent.VK_A && TIME_ENDS == false) {
             A = false;
             dx = 0;
-            setImage(blackwidowImage1INV);
+            if (!hitting()) {
+                setImage(blackwidowImage1INV);
+            }
         } else if (key == KeyEvent.VK_D && TIME_ENDS == false) {
             D = false;
             dx = 0;
-            setImage(blackwidowImage1);
+            if (!hitting()) {
+                setImage(blackwidowImage1);
+            }
         }
     }
 

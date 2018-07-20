@@ -82,7 +82,7 @@ public class Hulk {
     public void move() {
         if (UP == false) {
             x += dx;
-        } else if (UP == true && x < (WINDOW_WIDTH-HERO_WIDTH) && x>0) {
+        } else if (UP == true && x < (WINDOW_WIDTH - HERO_WIDTH) && x > 0) {
             if ((y < WINDOW_HEIGHT / 2) && ((y + HERO_HEIGHT) < WINDOW_HEIGHT)) {
                 x += dx;
                 y += dy;
@@ -204,8 +204,103 @@ public class Hulk {
 
     }
 
+    private boolean hitting() {
+        if (getImage() == hulkImage1 || getImage() == hulkImage1INV || getImage() == hulkImage2a || getImage() == hulkImage2b || getImage() == hulkImage2aINV || getImage() == hulkImage2bINV) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    public void moveHulkUp() {
+        if (UP == true) {
+            setImage(getImage2a());
+            this.hulkMotioncount += 10;
+            if (this.hulkMotioncount % 50 == 0) {
+
+                hulkMotioncount = 0;
+
+                if (HulkFall <= 15) {
+                    dy = -20;
+                    move();
+                } else if (HulkFall >= 16 && HulkFall < 32) {
+                    dy = 20;
+                    move();
+                }
+
+                if (HulkFall >= 33) {
+                    dy = 0;
+                    move();
+                }
+                HulkFall++;
+            }
+        }
+
+        if (UP == true && RIGHT == true && (x + 20) <= (WINDOW_WIDTH - HERO_WIDTH)) {
+            setImage(getImage2a());
+
+            if ((y > (WINDOW_HEIGHT / 2) - 150)) {
+                this.hulkMotioncount += 10;
+                if (this.hulkMotioncount % 10 == 0) {
+
+                    hulkMotioncount = 0;
+
+                    if (HulkFall <= 15) {
+                        dy = -20;
+                        dx = 20;
+                        move();
+                    } else if (HulkFall >= 16 && HulkFall < 32) {
+                        dy = 20;
+                        dx = 20;
+                        move();
+                    }
+
+                    if (HulkFall >= 33) {
+                        dy = 0;
+                        move();
+                    }
+                    HulkFall++;
+                }
+            }
+        }
+
+        if (UP == true && LEFT == true && ((x - 10) >= (0))) {
+            setImage(getImage2aINV());
+            if ((y > (WINDOW_HEIGHT / 2) - 150)) {
+                this.hulkMotioncount += 10;
+                if (this.hulkMotioncount % 10 == 0) {
+
+                    hulkMotioncount = 0;
+
+                    if (HulkFall <= 15) {
+                        dy = -20;
+                        dx = -20;
+                        move();
+                    } else if (HulkFall >= 16 && HulkFall <= 32) {
+                        dy = 20;
+                        dx = -20;
+                        if (HulkFall == 32) {
+                            dy = 15;
+                        }
+                        move();
+                    }
+
+                    if (HulkFall >= 33) {
+                        dy = 0;
+                        dx = 0;
+                        move();
+                    }
+                    HulkFall++;
+                }
+                HulkFall = 0;
+
+            }
+
+        }
+    }
+
     public void moveHulkRight() {
-        if (RIGHT == true) {
+        if (RIGHT == true && (!hitting())) {
             if ((x + 10) >= (WINDOW_WIDTH - HERO_WIDTH)) {
 
                 if (this.hulkMotioncount == 0) {
@@ -272,7 +367,7 @@ public class Hulk {
 
     public void moveHulkLeft() {
 
-        if (LEFT == true) {
+        if (LEFT == true && (!hitting())) {
             if ((x - 10) <= (0)) {
 
                 if (this.hulkMotioncount == 0) {
@@ -374,94 +469,6 @@ public class Hulk {
         }
     }
 
-    public void moveHulkUp() {
-        if (UP == true) {
-            setImage(getImage2a());
-            this.hulkMotioncount += 10;
-            if (this.hulkMotioncount % 50 == 0) {
-
-                hulkMotioncount = 0;
-
-                if (HulkFall <= 15) {
-                    dy = -20;
-                    move();
-                } else if (HulkFall >= 16 && HulkFall < 32) {
-                    dy = 20;
-                    move();
-                }
-
-                if (HulkFall >= 33) {
-                    dy = 0;
-                    move();
-                }
-                HulkFall++;
-            }
-        }
-
-        if (UP == true && RIGHT == true &&(x + 20) <= (WINDOW_WIDTH - HERO_WIDTH)) {
-            setImage(getImage2a());
-
-            if ((y > (WINDOW_HEIGHT / 2)-150)) {
-            this.hulkMotioncount += 10;
-            if (this.hulkMotioncount % 10 == 0) {
-
-                hulkMotioncount = 0;
-
-                if (HulkFall <= 15) {
-                    dy = -20;
-                    dx = 20;
-                    move();
-                } else if (HulkFall >= 16 && HulkFall < 32) {
-                    dy = 20;
-                    dx = 20;
-                    move();
-                }
-
-                if (HulkFall >= 33) {
-                    dy = 0;
-                    move();
-                }
-                HulkFall++;
-            }
-        }
-        }
-
-        if (UP == true && LEFT == true && ((x - 10) >= (0))) {
-                setImage(getImage2aINV());
-            if ((y > (WINDOW_HEIGHT / 2)-150)) {
-                this.hulkMotioncount += 10;
-                if (this.hulkMotioncount % 10 == 0) {
-
-                    hulkMotioncount = 0;
-
-                    if (HulkFall <= 15) {
-                        dy = -20;
-                        dx = -20;
-                        move();
-                    } else if (HulkFall >= 16 && HulkFall <= 32) {
-                        dy = 20;
-                        dx = -20;
-                        if(HulkFall == 32)
-                        {
-                            dy=15;
-                        }
-                        move();
-                    }
-
-                    if (HulkFall >= 33) {
-                        dy = 0;
-                        dx=0;
-                        move();
-                    }
-                    HulkFall++;
-                }
-                HulkFall = 0;
-
-            }
-
-        }
-    }
-
     public void keyPressed(KeyEvent e) throws IOException, InterruptedException {
 
         int key = e.getKeyCode();
@@ -473,14 +480,12 @@ public class Hulk {
         if (key == KeyEvent.VK_LEFT && TIME_ENDS == false) {
 
             LEFT = true;
-            // moveHulkLeft();
         }
 
         //--------------------------------------------------------------
         if (key == KeyEvent.VK_RIGHT && TIME_ENDS == false) {
 
             RIGHT = true;
-            // moveHulkRight();
         }
 
     }
@@ -497,22 +502,26 @@ public class Hulk {
             y = (4 * WINDOW_HEIGHT) / 9;
             RIGHT = false;
             LEFT = false;
-             if(getImage()==hulkImage2aINV){
+            if (getImage() == hulkImage2aINV) {
                 setImage(hulkImage1INV);
-            }
-            else
+            } else {
                 setImage(hulkImage1);
-        }
-        else if (key == KeyEvent.VK_LEFT && TIME_ENDS == false) {
+            }
+        } else if (key == KeyEvent.VK_LEFT && TIME_ENDS == false) {
 
             LEFT = false;
             dx = 0;
-            setImage(hulkImage1INV);
+            if (!hitting()) {
+                setImage(hulkImage1INV);
+            }
         } else if (key == KeyEvent.VK_RIGHT && TIME_ENDS == false) {
 
             RIGHT = false;
             dx = 0;
-            setImage(hulkImage1);
+            if (!hitting()) {
+                setImage(hulkImage1);
+            }
+
         }
     }
 

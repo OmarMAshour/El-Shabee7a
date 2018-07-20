@@ -359,7 +359,6 @@ public class MultiPanel extends JPanel {
             try {
                 try {
                     hulk.keyTyped(e);
-                    
                     blackwidow.keyTyped(e);
                 } catch (InterruptedException ex) {
                     Logger.getLogger(MultiPanel.class.getName()).log(Level.SEVERE, null, ex);

@@ -125,7 +125,7 @@ public class SinglePanel extends JPanel {
 
         add(bkHolder);
 
-        movingBW = new Timer(2000, new ActionListener() {
+        movingBW = new Timer(0, new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent ae) {
@@ -133,7 +133,15 @@ public class SinglePanel extends JPanel {
                 if (TIME_ENDS) {
                     x = 100;
                 } else {
-                    x = rand.nextInt(7);
+                    x = 0;
+                    if (hulk.getX() > blackwidow.getX() && !inRange()) {
+                        x = 2;
+                    } else if (hulk.getX() < blackwidow.getX() && !inRange()) {
+                        x = 1;
+                    } else {
+                        x = rand.nextInt(5) + 2;
+
+                    }
                 }
                 switch (x) {
                     case 0: {
@@ -382,7 +390,7 @@ public class SinglePanel extends JPanel {
                 try {
                     addScore(SCORE);
                     Arrays.sort(HIGHSCORES);
-                    
+
                     gameFrame.remove(SinglePanel.this);
                     MainMenuPanel mp = new MainMenuPanel();
                     gameFrame.showPanel(mp);
@@ -478,6 +486,16 @@ public class SinglePanel extends JPanel {
             BLACKWIDOW_HIT = true;
         } else if (blackwidow.getImage() == blackwidow.getImage3b() && hulk.getImage() == hulk.getImage1() && (hulk.getX() - blackwidow.getX() <= (290 * WINDOW_WIDTH) / 1920) && hulk.getX() - blackwidow.getX() > 0) {
             BLACKWIDOW_HIT = true;
+        }
+    }
+
+    public boolean inRange() {
+        if (hulk.getX() - blackwidow.getX() <= (220 * WINDOW_WIDTH) / 1920 && hulk.getX() - blackwidow.getX() > 0) {
+            return true;
+        } else if (blackwidow.getX() - hulk.getX() <= (220 * WINDOW_WIDTH) / 1920 && blackwidow.getX() - hulk.getX() > 0) {
+            return true;
+        } else {
+            return false;
         }
     }
 
