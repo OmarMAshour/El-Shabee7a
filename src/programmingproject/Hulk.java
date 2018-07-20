@@ -213,7 +213,9 @@ public class Hulk {
     }
 
     public void moveHulkUp() {
-        if (UP == true) {
+        if (UP == true && !hitting()) {
+            
+            
             setImage(getImage2a());
             this.hulkMotioncount += 10;
             if (this.hulkMotioncount % 50 == 0) {
@@ -236,67 +238,67 @@ public class Hulk {
             }
         }
 
-        if (UP == true && RIGHT == true && (x + 20) <= (WINDOW_WIDTH - HERO_WIDTH)) {
-            setImage(getImage2a());
-
-            if ((y > (WINDOW_HEIGHT / 2) - 150)) {
-                this.hulkMotioncount += 10;
-                if (this.hulkMotioncount % 10 == 0) {
-
-                    hulkMotioncount = 0;
-
-                    if (HulkFall <= 15) {
-                        dy = -20;
-                        dx = 20;
-                        move();
-                    } else if (HulkFall >= 16 && HulkFall < 32) {
-                        dy = 20;
-                        dx = 20;
-                        move();
-                    }
-
-                    if (HulkFall >= 33) {
-                        dy = 0;
-                        move();
-                    }
-                    HulkFall++;
-                }
-            }
-        }
-
-        if (UP == true && LEFT == true && ((x - 10) >= (0))) {
-            setImage(getImage2aINV());
-            if ((y > (WINDOW_HEIGHT / 2) - 150)) {
-                this.hulkMotioncount += 10;
-                if (this.hulkMotioncount % 10 == 0) {
-
-                    hulkMotioncount = 0;
-
-                    if (HulkFall <= 15) {
-                        dy = -20;
-                        dx = -20;
-                        move();
-                    } else if (HulkFall >= 16 && HulkFall <= 32) {
-                        dy = 20;
-                        dx = -20;
-                        if (HulkFall == 32) {
-                            dy = 15;
-                        }
-                        move();
-                    }
-
-                    if (HulkFall >= 33) {
-                        dy = 0;
-                        dx = 0;
-                        move();
-                    }
-                    HulkFall++;
-                }
-                HulkFall = 0;
-
-            }
-
-        }
+//        if (UP == true && RIGHT == true && (x + 20) <= (WINDOW_WIDTH - HERO_WIDTH)) {
+//            setImage(getImage2a());
+//
+//            if ((y > (WINDOW_HEIGHT / 2) - 150)) {
+//                this.hulkMotioncount += 10;
+//                if (this.hulkMotioncount % 10 == 0) {
+//
+//                    hulkMotioncount = 0;
+//
+//                    if (HulkFall <= 15) {
+//                        dy = -20;
+//                        dx = 20;
+//                        move();
+//                    } else if (HulkFall >= 16 && HulkFall < 32) {
+//                        dy = 20;
+//                        dx = 20;
+//                        move();
+//                    }
+//
+//                    if (HulkFall >= 33) {
+//                        dy = 0;
+//                        move();
+//                    }
+//                    HulkFall++;
+//                }
+//            }
+//        }
+//
+//        if (UP == true && LEFT == true && ((x - 10) >= (0))) {
+//            setImage(getImage2aINV());
+//            if ((y > (WINDOW_HEIGHT / 2) - 150)) {
+//                this.hulkMotioncount += 10;
+//                if (this.hulkMotioncount % 10 == 0) {
+//
+//                    hulkMotioncount = 0;
+//
+//                    if (HulkFall <= 15) {
+//                        dy = -20;
+//                        dx = -20;
+//                        move();
+//                    } else if (HulkFall >= 16 && HulkFall <= 32) {
+//                        dy = 20;
+//                        dx = -20;
+//                        if (HulkFall == 32) {
+//                            dy = 15;
+//                        }
+//                        move();
+//                    }
+//
+//                    if (HulkFall >= 33) {
+//                        dy = 0;
+//                        dx = 0;
+//                        move();
+//                    }
+//                    HulkFall++;
+//                }
+//                HulkFall = 0;
+//
+//            }
+//
+//        }
     }
 
     public void moveHulkRight() {
@@ -473,19 +475,21 @@ public class Hulk {
 
         int key = e.getKeyCode();
 
-        if (key == KeyEvent.VK_UP && TIME_ENDS == false) {
-            UP = true;
+//        if (key == KeyEvent.VK_UP && TIME_ENDS == false) {
+//            UP = true;
+//
+//        }
+        if (TIME_ENDS == false) {
+            if (key == KeyEvent.VK_LEFT) {
 
-        }
-        if (key == KeyEvent.VK_LEFT && TIME_ENDS == false) {
+                LEFT = true;
+            }
 
-            LEFT = true;
-        }
+            //--------------------------------------------------------------
+            if (key == KeyEvent.VK_RIGHT) {
 
-        //--------------------------------------------------------------
-        if (key == KeyEvent.VK_RIGHT && TIME_ENDS == false) {
-
-            RIGHT = true;
+                RIGHT = true;
+            }
         }
 
     }
@@ -532,6 +536,9 @@ public class Hulk {
                 hit1();
             } else if (e.getKeyChar() == 'n' || e.getKeyChar() == 'N') {
                 hit2();
+            } else if (e.getKeyCode() == KeyEvent.VK_UP) {
+//                UP = true;
+                System.out.println("jumping");
             }
         }
     }

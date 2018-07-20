@@ -41,6 +41,8 @@ public class SinglePanel extends JPanel {
     private ImageIcon scoreIcon;
     private ImageIcon backIcon;
     private boolean hulkAngrySoundPlayed;
+    private static int HULKBAR_NO;
+    private static int BLACKWIDOWBAR_NO;
 
     private JLabel WinnerLbl;
     private JLabel ScoreIconLbl;
@@ -64,7 +66,9 @@ public class SinglePanel extends JPanel {
         scoreIcon = new ImageIcon("Score.png");
         backIcon = new ImageIcon("Back1.png");
         
-        hulkAngrySoundPlayed = false;
+        TIME_ENDS = false;
+        HULKBAR_NO = 0;
+        BLACKWIDOWBAR_NO = 0;
         timer_util = new java.util.Timer();
 
         timersphoto = new Timers();
@@ -399,7 +403,7 @@ public class SinglePanel extends JPanel {
                     gameFrame.remove(SinglePanel.this);
                     MainMenuPanel mp = new MainMenuPanel();
                     gameFrame.showPanel(mp);
-
+                    stopTimers();
                 } catch (IOException ex) {
                     Logger.getLogger(HighScorePanel.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -520,6 +524,16 @@ public class SinglePanel extends JPanel {
 
         }
 
+    }
+    
+    private void stopTimers() {
+        timer_util.cancel();
+        timer.stop();
+        timer2.stop();
+        timer3.stop();
+        timer4.stop();
+        timer5.stop();
+        movingBW.stop();
     }
 
     class Hto1 extends TimerTask {

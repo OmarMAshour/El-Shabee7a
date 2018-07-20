@@ -29,8 +29,6 @@ public class ProgrammingProject {
     public static int SCORE = 0;
     public static int[] HIGHSCORES = new int[1000];
     public static boolean ASU_BACKGROUND = false;
-    public static int HULKBAR_NO = 0;
-    public static int BLACKWIDOWBAR_NO = 0;
     public static GameFrame gameFrame;
 
     public static void addScore(int score) {

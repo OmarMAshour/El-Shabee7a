@@ -1,13 +1,9 @@
 package programmingproject;
 
 import java.awt.Image;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
-import javax.swing.*;
-import static programmingproject.ProgrammingProject.*;
 public class HulkHealth {
 
     
@@ -43,17 +39,6 @@ public class HulkHealth {
         
         temp=bar[20];
         
-        timer = new Timer(100, new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent ae) {
-
-                if(BLACKWIDOW_HIT){
-                    HULKBAR_NO ++;
-                }
-                    
-                        }
-        });
     }
 
   

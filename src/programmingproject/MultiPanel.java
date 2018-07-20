@@ -15,9 +15,8 @@ import sun.audio.AudioPlayer;
 import sun.audio.AudioStream;
 import java.util.Arrays;
 
-
 public class MultiPanel extends JPanel {
-    
+
     private Hulk hulk;
     private BlackWidow blackwidow;
     private JLabel bkHolder;
@@ -27,54 +26,61 @@ public class MultiPanel extends JPanel {
     private HulkHealth hulkhealth;
     private BlackWidowHealth blackwidowhealth;
     private boolean hulkAngrySoundPlayed;
-    
+    private static int HULKBAR_NO;
+    private static int BLACKWIDOWBAR_NO;
+
     private javax.swing.Timer timer2;
     private javax.swing.Timer timer4;
     private javax.swing.Timer timer5;
     private int i7 = 0, i14 = 0;
     private javax.swing.Timer timer3;
     private Timers timersphoto;
-    
+
     private ImageIcon blackwidowWinsIcon;
     private ImageIcon hulkWinsIcon;
     private ImageIcon drawIcon;
     private ImageIcon scoreIcon;
     private ImageIcon backIcon;
-    
+
     private JLabel WinnerLbl;
     private JLabel ScoreIconLbl;
     private JLabel ScoreAmountLbl;
     private JLabel BackLbl;
-    
+
     public MultiPanel() throws IOException {
-        
+
         WinnerLbl = new JLabel();
-        
+
         ScoreIconLbl = new JLabel();
         ScoreAmountLbl = new JLabel();
-        
+
         BackLbl = new JLabel();
-        
+
         blackwidowWinsIcon = new ImageIcon("BWwins.png");
         hulkWinsIcon = new ImageIcon("HulkWins.png");
         drawIcon = new ImageIcon("Draw.png");
         scoreIcon = new ImageIcon("Score.png");
         backIcon = new ImageIcon("Back1.png");
-        
+
+        TIME_ENDS = false;
+
+        HULKBAR_NO = 0;
+        BLACKWIDOWBAR_NO = 0;
+
         timer_util = new java.util.Timer();
-        
+
         timersphoto = new Timers();
         hulk = new Hulk(WINDOW_WIDTH / 32, (4 * WINDOW_HEIGHT) / 9);
         blackwidow = new BlackWidow(WINDOW_WIDTH - ((WINDOW_WIDTH / 32) + HERO_WIDTH), (4 * WINDOW_HEIGHT) / 9);
-        
+
         hulkhealth = new HulkHealth();
         blackwidowhealth = new BlackWidowHealth();
-        
+
         setFocusable(true);
         addKeyListener(new TAdapter());
-        
+
         bkHolder = new JLabel();
-         if (ASU_BACKGROUND == true) {
+        if (ASU_BACKGROUND == true) {
 
             background = new ImageIcon("ASU.jpg");
             try {
@@ -102,114 +108,112 @@ public class MultiPanel extends JPanel {
         }
         bkHolder.setIcon(background);
         bkHolder.setBounds(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
-        
+
         WinnerLbl.setBounds((WINDOW_WIDTH / 2) - 465, (211 * WINDOW_HEIGHT) / 1080, 929, 310);
-        
+
         ScoreIconLbl.setBounds((WINDOW_WIDTH / 2) - 100, ((211 * WINDOW_HEIGHT) / 1080) + 312, 109, 31);
-        
+
         ScoreAmountLbl.setBounds((WINDOW_WIDTH / 2) + (-100 + 109 + 10), ((211 * WINDOW_HEIGHT) / 1080) + 280, 200, 100);
         ScoreAmountLbl.setForeground(Color.RED);
         ScoreAmountLbl.setFont(new Font("Serif", Font.BOLD, 32));
-        
+
         BackLbl.setBounds((50 * WINDOW_WIDTH) / 1920, (928 * WINDOW_HEIGHT) / 1080, 272, 119);
-        
+
         setLayout(null);
-        
+
         add(WinnerLbl);
-        
+
         add(ScoreAmountLbl);
         add(ScoreIconLbl);
         add(BackLbl);
-        
+
         add(bkHolder);
-        
+
         timer3 = new Timer(500, new ActionListener() {
-            
+
             @Override
             public void actionPerformed(ActionEvent ae) {
                 if (BLACKWIDOWBAR_NO == 20) {
                     SCORE = (60 - TIME_COUNTER) * (20 - HULKBAR_NO) * 100;
-                    
+
                     WinnerLbl.setIcon(hulkWinsIcon);
                     TIME_ENDS = true;
-                    
+
                     ScoreAmountLbl.setText("" + SCORE);
                     ScoreIconLbl.setIcon(scoreIcon);
                     BackLbl.setIcon(backIcon);
-                    
+
                 } else {
                     checkHulkHit();
                     if (HULK_HIT) {
                         BLACKWIDOWBAR_NO++;
                     }
-                    
+
                 }
             }
         });
         timer3.start();
-        
+
         timer2 = new Timer(500, new ActionListener() {
-            
+
             @Override
             public void actionPerformed(ActionEvent ae) {
                 if (HULKBAR_NO == 20) {
                     SCORE = (60 - TIME_COUNTER) * (20 - BLACKWIDOWBAR_NO) * 100;
-                    
+
                     WinnerLbl.setIcon(blackwidowWinsIcon);
                     TIME_ENDS = true;
-                    
+
                     ScoreAmountLbl.setText("" + SCORE);
                     ScoreIconLbl.setIcon(scoreIcon);
                     BackLbl.setIcon(backIcon);
                 } else {
                     checkBlackwidowHit();
-                    
+
                     if (BLACKWIDOW_HIT) {
                         HULKBAR_NO++;
                     }
-                    
+
                 }
             }
         });
         timer2.start();
         timer = new Timer(10, new ActionListener() {
-            
             @Override
             public void actionPerformed(ActionEvent ae) {
-                
+                System.out.println(TIME_ENDS);
                 if (TIME_ENDS == true) {
                     if (HULKBAR_NO > BLACKWIDOWBAR_NO) {
                         WinnerLbl.setIcon(blackwidowWinsIcon);
-                        
+
                         SCORE = (20 - BLACKWIDOWBAR_NO) * 100;
-                        
+
                         ScoreAmountLbl.setText("" + SCORE);
                         ScoreIconLbl.setIcon(scoreIcon);
                         BackLbl.setIcon(backIcon);
-                        
+
                     } else if (HULKBAR_NO < BLACKWIDOWBAR_NO) {
                         WinnerLbl.setIcon(hulkWinsIcon);
-                        
+
                         SCORE = (20 - HULKBAR_NO) * 100;
-                        
+
                         ScoreAmountLbl.setText("" + SCORE);
                         ScoreIconLbl.setIcon(scoreIcon);
                         BackLbl.setIcon(backIcon);
-                        
+
                     } else {
                         WinnerLbl.setIcon(drawIcon);
                         BackLbl.setIcon(backIcon);
                         SCORE = 0;
-                        
                     }
                 }
-                
+
                 if (TIME_ENDS == false) {
-                    
+
                     if (W == true && UP == true) {
                         blackwidow.moveBlackWidowUp();
                         hulk.moveHulkUp();
-                        
+
                     } else if (W == true) {
                         blackwidow.moveBlackWidowUp();
                         hulk.moveHulkLeft();
@@ -228,7 +232,7 @@ public class MultiPanel extends JPanel {
                         blackwidow.blackwidowMoveRight();
                     } else if (UP == true && RIGHT == true) {
                         hulk.moveHulkUp();
-                        
+
                         blackwidow.blackwidowMoveLeft();
                         blackwidow.blackwidowMoveRight();
                     } else if (UP == true && LEFT == true) {
@@ -241,7 +245,7 @@ public class MultiPanel extends JPanel {
                         blackwidow.blackwidowMoveLeft();
                         blackwidow.blackwidowMoveRight();
                     }
-                    
+
                 }
                 //checkBlackwidowHit();
                 if (BLACKWIDOW_HIT) {
@@ -266,15 +270,15 @@ public class MultiPanel extends JPanel {
                     }
                     HULK_HIT = false;
                 }
-                
+
                 repaint();
-                
+
             }
-            
+
         });
-        
+
         timer.start();
-        
+
         timer4 = new Timer(1000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
@@ -282,14 +286,13 @@ public class MultiPanel extends JPanel {
             }
         });
         timer4.start();
-        
+
         timer5 = new Timer(500, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 if (HULKBAR_NO == 7) {
                     i7++;
-                }
-                else if (HULKBAR_NO == 14) {
+                } else if (HULKBAR_NO == 14) {
                     i14++;
                 } else {
                     hulkAngrySoundPlayed = false;
@@ -310,31 +313,31 @@ public class MultiPanel extends JPanel {
         }
         );
         timer5.start();
-        
+
         BackLbl.addMouseListener(new MouseAdapter() {
-            
+
             @Override
             public void mouseClicked(MouseEvent me) {
-                
+
                 try {
                     addScore(SCORE);
                     Arrays.sort(HIGHSCORES);
-                    
+
                     gameFrame.remove(MultiPanel.this);
                     MainMenuPanel mp = new MainMenuPanel();
                     gameFrame.showPanel(mp);
-                    
+                    stopTimers();
                 } catch (IOException ex) {
                     Logger.getLogger(HighScorePanel.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-            
+
         });
-        
+
     }
-    
+
     private class TAdapter extends KeyAdapter {
-        
+
         @Override
         public void keyReleased(KeyEvent e) {
             try {
@@ -344,7 +347,7 @@ public class MultiPanel extends JPanel {
                 Logger.getLogger(MultiPanel.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        
+
         @Override
         public void keyPressed(KeyEvent e) {
             try {
@@ -358,7 +361,7 @@ public class MultiPanel extends JPanel {
                 Logger.getLogger(MultiPanel.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        
+
         public void keyTyped(KeyEvent e) {
             try {
                 try {
@@ -371,37 +374,37 @@ public class MultiPanel extends JPanel {
                 Logger.getLogger(MultiPanel.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        
+
     }
-    
+
     @Override
     public void paint(Graphics g) {
-        
+
         try {
             super.paint(g);
             g.drawImage(blackwidow.getImage(), blackwidow.getX(), blackwidow.getY(), HERO_WIDTH, HERO_HEIGHT, null);
             g.drawImage(hulk.getImage(), hulk.getX(), hulk.getY(), HERO_WIDTH, HERO_HEIGHT, null);
-            
+
             g.drawImage(hulkhealth.getBar(HULKBAR_NO), (13 * WINDOW_WIDTH) / 480, (11 * WINDOW_HEIGHT) / 360, (609 * WINDOW_WIDTH) / 1920, (164 * WINDOW_HEIGHT) / 1080, null);
             g.drawImage(blackwidowhealth.getBar(BLACKWIDOWBAR_NO), (1259 * WINDOW_WIDTH) / 1920, (11 * WINDOW_HEIGHT) / 360, (609 * WINDOW_WIDTH) / 1920, (164 * WINDOW_HEIGHT) / 1080, null);
-            
+
             g.drawImage(timersphoto.getRight(), (960 * WINDOW_WIDTH) / 1920, (37 * WINDOW_HEIGHT) / 1080, ((1043 - 960) * WINDOW_WIDTH) / 1920, ((179 - 37) * WINDOW_HEIGHT) / 1080, null);
             g.drawImage(timersphoto.getLeft(), (877 * WINDOW_WIDTH) / 1920, (37 * WINDOW_HEIGHT) / 1080, ((960 - 877) * WINDOW_WIDTH) / 1920, ((179 - 37) * WINDOW_HEIGHT) / 1080, null);
-            
+
         } catch (Exception e) {
-            
+
         }
-        
+
         Toolkit.getDefaultToolkit().sync();
-        
+
     }
-    
+
     public void checkBlackwidowHit() {
         if (blackwidow.getImage() == blackwidow.getImage3c() && hulk.getX() - blackwidow.getX() <= (220 * WINDOW_WIDTH) / 1920 && hulk.getX() - blackwidow.getX() > 0) {
 
             //HULKBAR_NO++;
             BLACKWIDOW_HIT = true;
-            
+
         } else if (blackwidow.getImage() == blackwidow.getImage3cINV() && blackwidow.getX() - hulk.getX() <= (220 * WINDOW_WIDTH) / 1920 && blackwidow.getX() - hulk.getX() > 0) {
             BLACKWIDOW_HIT = true;
             //HULKBAR_NO++;
@@ -425,52 +428,61 @@ public class MultiPanel extends JPanel {
             //HULKBAR_NO++;
         }
     }
-    
+
     public void checkHulkHit() {
-        
+
         if (hulk.getImage() == hulk.getImage3b() && blackwidow.getX() - hulk.getX() <= (270 * WINDOW_WIDTH) / 1920 && blackwidow.getX() - hulk.getX() > 0) {
-            
+
             HULK_HIT = true;
-            
+
         } else if (hulk.getImage() == hulk.getImage3bINV() && hulk.getX() - blackwidow.getX() <= (270 * WINDOW_WIDTH) / 1920 && hulk.getX() - blackwidow.getX() > 0) {
             HULK_HIT = true;
         } else if (hulk.getImage() == hulk.getImage4b() && blackwidow.getX() - hulk.getX() <= (315 * WINDOW_WIDTH) / 1920 && blackwidow.getX() - hulk.getX() > 0) {
             HULK_HIT = true;
-            
+
         } else if (hulk.getImage() == hulk.getImage4bINV() && hulk.getX() - blackwidow.getX() <= (315 * WINDOW_WIDTH) / 1920 && hulk.getX() - blackwidow.getX() > 0) {
             HULK_HIT = true;
-            
+
         }
-        
+
     }
-    
+
+    private void stopTimers() {
+        timer_util.cancel();
+        timer.stop();
+        timer2.stop();
+        timer3.stop();
+        timer4.stop();
+        timer5.stop();
+    }
+
     class Hto1 extends TimerTask {
-        
+
         public void run() {
             hulk.setImage(hulk.getImage1());
         }
     }
-    
+
     class Hto1I extends TimerTask {
-        
+
         public void run() {
             hulk.setImage(hulk.getImage1INV());
         }
     }
-    
+
     class Bto1 extends TimerTask {
-        
+
         public void run() {
             blackwidow.setImage(blackwidow.getImage1());
-            
+
         }
     }
-    
+
     class Bto1I extends TimerTask {
-        
+
         public void run() {
             blackwidow.setImage(blackwidow.getImage1INV());
-            
+
         }
     }
 }
