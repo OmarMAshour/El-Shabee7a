@@ -3,14 +3,12 @@ package programmingproject;
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.imageio.ImageIO;
 import static programmingproject.ProgrammingProject.*;
 import java.util.TimerTask;
 import sun.audio.AudioPlayer;
@@ -24,7 +22,6 @@ public class MultiPanel extends JPanel {
     private BlackWidow blackwidow;
     private JLabel bkHolder;
     private ImageIcon background;
-    private Image hulkStable;
     private javax.swing.Timer timer;
     private java.util.Timer timer_util;
     private HulkHealth hulkhealth;
@@ -66,7 +63,6 @@ public class MultiPanel extends JPanel {
         timer_util = new java.util.Timer();
         
         timersphoto = new Timers();
-        // hulkStable = hulk.getNormalStateImage();
         hulk = new Hulk(WINDOW_WIDTH / 32, (4 * WINDOW_HEIGHT) / 9);
         blackwidow = new BlackWidow(WINDOW_WIDTH - ((WINDOW_WIDTH / 32) + HERO_WIDTH), (4 * WINDOW_HEIGHT) / 9);
         

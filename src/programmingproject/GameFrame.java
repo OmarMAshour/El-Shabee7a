@@ -26,13 +26,11 @@ public class GameFrame extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         dm = new DisplayMode(WINDOW_WIDTH, WINDOW_HEIGHT, 16, DisplayMode.REFRESH_RATE_UNKNOWN);
         s = new Screen();
-        
-        
-         ip = new IntroPanel();
-        
-        add(ip);
-        s.setFullScreen(dm, this);
 
+        ip = new IntroPanel();
+        add(ip);
+        
+        s.setFullScreen(dm, this);
     }
 
     public void showPanel(JPanel p) {
@@ -40,6 +38,8 @@ public class GameFrame extends JFrame {
         p.setVisible(true);
         validate();
         repaint();
+        // is a must to get the focus of keyboard to the new panel and keys work
+        p.requestFocusInWindow();
     }
 
 }

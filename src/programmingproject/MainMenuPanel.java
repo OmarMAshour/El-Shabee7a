@@ -12,13 +12,13 @@ import javax.swing.*;
 import static programmingproject.ProgrammingProject.*;
 import sun.audio.AudioPlayer;
 import sun.audio.AudioStream;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
-import javafx.embed.swing.JFXPanel;
+//import javafx.scene.media.Media;
+//import javafx.scene.media.MediaPlayer;
+//import javafx.embed.swing.JFXPanel;
 
 public class MainMenuPanel extends JPanel {
 
-    private final JLabel backgroundLbl;
+    private JLabel backgroundLbl;
     private JLabel logoLbl;
     private JLabel singlePlayerLbl;
     private JLabel multiPlayerLbl;
@@ -38,21 +38,18 @@ public class MainMenuPanel extends JPanel {
     private ImageIcon optionsIcon_enlarged;
     private ImageIcon highScoresIcon_enlarged;
     private ImageIcon exitIcon_enlarged;
+    public static boolean multi;
 
     public MainMenuPanel() throws IOException, FileNotFoundException {
-        final JFXPanel fxPanel = new JFXPanel();
-        
+
         initializeLabels();
-        
 
-        String bip = "1.mp3";
-        Media hit = new Media(new File(bip).toURI().toString());
-        MediaPlayer mediaPlayer = new MediaPlayer(hit);
-        mediaPlayer.play();
-
-
-
-        backgroundLbl = new JLabel(new ImageIcon("Background_MainWindow.jpg"));
+        // play main menu song
+//        final JFXPanel fxPanel = new JFXPanel();
+//        String bip = "1.mp3";
+//        Media hit = new Media(new File(bip).toURI().toString());
+//        MediaPlayer mediaPlayer = new MediaPlayer(hit);
+//        mediaPlayer.play();
 
         setLayout(null);
 
@@ -73,6 +70,7 @@ public class MainMenuPanel extends JPanel {
         singlePlayerLbl.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent me) {
+                multi = false;
                 try {
                     InputStream in = new FileInputStream("Menu_Select.wav");
                     AudioStream audioStream = new AudioStream(in);
@@ -134,6 +132,7 @@ public class MainMenuPanel extends JPanel {
         multiPlayerLbl.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent me) {
+                multi = true;
                 try {
                     InputStream in = new FileInputStream("Menu_Select.wav");
                     AudioStream audioStream = new AudioStream(in);
@@ -433,7 +432,7 @@ public class MainMenuPanel extends JPanel {
         } catch (Exception e) {
             System.out.println("Exception in loading exitIcon");
         }
-
+        backgroundLbl = new JLabel(new ImageIcon("Background_MainWindow.jpg"));
         singlePlayerIcon_enlarged = new ImageIcon("Single2.png");
         multiPlayerIcon_enlarged = new ImageIcon("Mult2.png");
         highScoresIcon_enlarged = new ImageIcon("HighScores2.png");

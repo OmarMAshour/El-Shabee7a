@@ -1,16 +1,13 @@
 package programmingproject;
 
 import java.awt.*;
-import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import static java.awt.event.KeyEvent.*;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
 import static programmingproject.ProgrammingProject.*;
 import java.util.Timer;
 import java.util.TimerTask;

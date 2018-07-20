@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.*;
+import static programmingproject.MainMenuPanel.multi;
 import static programmingproject.ProgrammingProject.*;
 import static programmingproject.ProgrammingProject.WINDOW_WIDTH;
 
@@ -86,8 +87,13 @@ public class SelectMap extends JPanel {
             public void mouseClicked(MouseEvent me) {
                 gameFrame.remove(SelectMap.this);
                 try {
-                    SinglePanel sp = new SinglePanel();
-                    gameFrame.showPanel(sp);
+                    if (multi) {
+                        MultiPanel mp = new MultiPanel();
+                        gameFrame.showPanel(mp);
+                    } else {
+                        SinglePanel sp = new SinglePanel();
+                        gameFrame.showPanel(sp);
+                    }
                 } catch (IOException ex) {
                     Logger.getLogger(HighScorePanel.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -104,7 +110,6 @@ public class SelectMap extends JPanel {
 
             @Override
             public void mouseEntered(MouseEvent me) {
-
                 ASUlabel.setIcon(ASUicon2);
             }
 
@@ -113,8 +118,14 @@ public class SelectMap extends JPanel {
                 gameFrame.remove(SelectMap.this);
                 try {
                     ASU_BACKGROUND = true;
-                    SinglePanel sp = new SinglePanel();
-                    gameFrame.showPanel(sp);
+                    if (multi) {
+                        MultiPanel mp = new MultiPanel();
+                        gameFrame.showPanel(mp);
+                    } else {
+                        SinglePanel sp = new SinglePanel();
+                        gameFrame.showPanel(sp);
+                    }
+                    
                 } catch (IOException ex) {
                     Logger.getLogger(HighScorePanel.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -122,9 +133,7 @@ public class SelectMap extends JPanel {
 
             @Override
             public void mouseExited(MouseEvent me) {
-
                 ASUlabel.setIcon(ASUicon1);
-
             }
 
         });

@@ -2,14 +2,13 @@ package programmingproject;
 
 import java.awt.*;
 import java.io.IOException;
-import javax.swing.*;
 import java.util.Arrays;
 
 /**
  *
  * @author Omar Ashour
  */
-public class ProgrammingProject extends JFrame {
+public class ProgrammingProject {
 
     public static final int WINDOW_WIDTH = Toolkit.getDefaultToolkit().getScreenSize().width;
     public static final int WINDOW_HEIGHT = Toolkit.getDefaultToolkit().getScreenSize().height;
