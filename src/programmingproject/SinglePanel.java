@@ -33,13 +33,14 @@ public class SinglePanel extends JPanel {
     private int i7 = 0, i14 = 0;
     private javax.swing.Timer timer3;
     private Timers timersphoto;
-
+   
     private javax.swing.Timer movingBW;
     private ImageIcon blackwidowWinsIcon;
     private ImageIcon hulkWinsIcon;
     private ImageIcon drawIcon;
     private ImageIcon scoreIcon;
     private ImageIcon backIcon;
+    private boolean hulkAngrySoundPlayed;
 
     private JLabel WinnerLbl;
     private JLabel ScoreIconLbl;
@@ -62,7 +63,8 @@ public class SinglePanel extends JPanel {
         drawIcon = new ImageIcon("Draw.png");
         scoreIcon = new ImageIcon("Score.png");
         backIcon = new ImageIcon("Back1.png");
-
+        
+        hulkAngrySoundPlayed = false;
         timer_util = new java.util.Timer();
 
         timersphoto = new Timers();
@@ -363,11 +365,14 @@ public class SinglePanel extends JPanel {
                 if (HULKBAR_NO == 7) {
                     i7++;
                 }
-                if (HULKBAR_NO == 14) {
+                else if (HULKBAR_NO == 14) {
                     i14++;
+                } else {
+                    hulkAngrySoundPlayed = false;
                 }
-                if (i7 == 1 || i14 == 1) {
+                if ((i7 == 1 || i14 == 1) && !hulkAngrySoundPlayed) {
                     try {
+                        hulkAngrySoundPlayed = true;
                         InputStream in = new FileInputStream("Hulk is Angry.wav");
                         AudioStream audioStream2 = new AudioStream(in);
                         AudioPlayer.player.start(audioStream2);
