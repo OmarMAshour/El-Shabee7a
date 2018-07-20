@@ -26,6 +26,7 @@ public class MultiPanel extends JPanel {
     private java.util.Timer timer_util;
     private HulkHealth hulkhealth;
     private BlackWidowHealth blackwidowhealth;
+    private boolean hulkAngrySoundPlayed;
     
     private javax.swing.Timer timer2;
     private javax.swing.Timer timer4;
@@ -288,11 +289,14 @@ public class MultiPanel extends JPanel {
                 if (HULKBAR_NO == 7) {
                     i7++;
                 }
-                if (HULKBAR_NO == 14) {
+                else if (HULKBAR_NO == 14) {
                     i14++;
+                } else {
+                    hulkAngrySoundPlayed = false;
                 }
-                if (i7 == 1 || i14 == 1) {
+                if ((i7 == 1 || i14 == 1) && !hulkAngrySoundPlayed) {
                     try {
+                        hulkAngrySoundPlayed = true;
                         InputStream in = new FileInputStream("Hulk is Angry.wav");
                         AudioStream audioStream2 = new AudioStream(in);
                         AudioPlayer.player.start(audioStream2);
