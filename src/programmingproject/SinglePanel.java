@@ -264,7 +264,7 @@ public class SinglePanel extends JPanel {
 
                     } else {
                         WinnerLbl.setIcon(drawIcon);
-
+                        BackLbl.setIcon(backIcon);
                         SCORE = 0;
 
                     }
@@ -381,9 +381,11 @@ public class SinglePanel extends JPanel {
 
                 try {
                     addScore(SCORE);
-
                     Arrays.sort(HIGHSCORES);
-                    MainMenuPanel mw = new MainMenuPanel();
+                    
+                    gameFrame.remove(SinglePanel.this);
+                    MainMenuPanel mp = new MainMenuPanel();
+                    gameFrame.showPanel(mp);
 
                 } catch (IOException ex) {
                     Logger.getLogger(HighScorePanel.class.getName()).log(Level.SEVERE, null, ex);

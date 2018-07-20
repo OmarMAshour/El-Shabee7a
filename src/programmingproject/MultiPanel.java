@@ -197,7 +197,7 @@ public class MultiPanel extends JPanel {
                         
                     } else {
                         WinnerLbl.setIcon(drawIcon);
-                        
+                        BackLbl.setIcon(backIcon);
                         SCORE = 0;
                         
                     }
@@ -314,9 +314,11 @@ public class MultiPanel extends JPanel {
                 
                 try {
                     addScore(SCORE);
-                    
                     Arrays.sort(HIGHSCORES);
-                    MainMenuPanel mw = new MainMenuPanel();
+                    
+                    gameFrame.remove(MultiPanel.this);
+                    MainMenuPanel mp = new MainMenuPanel();
+                    gameFrame.showPanel(mp);
                     
                 } catch (IOException ex) {
                     Logger.getLogger(HighScorePanel.class.getName()).log(Level.SEVERE, null, ex);

@@ -85,6 +85,7 @@ public class SelectMap extends JPanel {
 
             @Override
             public void mouseClicked(MouseEvent me) {
+                gameFrame.remove(IntroPanel.mp);
                 gameFrame.remove(SelectMap.this);
                 try {
                     if (multi) {
@@ -115,6 +116,7 @@ public class SelectMap extends JPanel {
 
             @Override
             public void mouseClicked(MouseEvent me) {
+                gameFrame.remove(IntroPanel.mp);
                 gameFrame.remove(SelectMap.this);
                 try {
                     ASU_BACKGROUND = true;

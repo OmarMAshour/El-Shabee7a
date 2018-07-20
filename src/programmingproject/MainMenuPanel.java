@@ -12,9 +12,9 @@ import javax.swing.*;
 import static programmingproject.ProgrammingProject.*;
 import sun.audio.AudioPlayer;
 import sun.audio.AudioStream;
-//import javafx.scene.media.Media;
-//import javafx.scene.media.MediaPlayer;
-//import javafx.embed.swing.JFXPanel;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.embed.swing.JFXPanel;
 
 public class MainMenuPanel extends JPanel {
 
@@ -45,11 +45,11 @@ public class MainMenuPanel extends JPanel {
         initializeLabels();
 
         // play main menu song
-//        final JFXPanel fxPanel = new JFXPanel();
-//        String bip = "1.mp3";
-//        Media hit = new Media(new File(bip).toURI().toString());
-//        MediaPlayer mediaPlayer = new MediaPlayer(hit);
-//        mediaPlayer.play();
+        final JFXPanel fxPanel = new JFXPanel();
+        String bip = "1.mp3";
+        Media hit = new Media(new File(bip).toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(hit);
+        mediaPlayer.play();
 
         setLayout(null);
 
