@@ -475,10 +475,10 @@ public class Hulk {
 
         int key = e.getKeyCode();
 
-//        if (key == KeyEvent.VK_UP && TIME_ENDS == false) {
-//            UP = true;
-//
-//        }
+        if (key == KeyEvent.VK_UP && TIME_ENDS == false) {
+            UP = true;
+
+        }
         if (TIME_ENDS == false) {
             if (key == KeyEvent.VK_LEFT) {
 
@@ -536,9 +536,6 @@ public class Hulk {
                 hit1();
             } else if (e.getKeyChar() == 'n' || e.getKeyChar() == 'N') {
                 hit2();
-            } else if (e.getKeyCode() == KeyEvent.VK_UP) {
-//                UP = true;
-                System.out.println("jumping");
             }
         }
     }

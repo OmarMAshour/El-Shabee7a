@@ -33,7 +33,7 @@ public class SinglePanel extends JPanel {
     private int i7 = 0, i14 = 0;
     private javax.swing.Timer timer3;
     private Timers timersphoto;
-   
+
     private javax.swing.Timer movingBW;
     private ImageIcon blackwidowWinsIcon;
     private ImageIcon hulkWinsIcon;
@@ -65,7 +65,8 @@ public class SinglePanel extends JPanel {
         drawIcon = new ImageIcon("Draw.png");
         scoreIcon = new ImageIcon("Score.png");
         backIcon = new ImageIcon("Back1.png");
-        
+
+        SCORE = 0;
         TIME_ENDS = false;
         HULKBAR_NO = 0;
         BLACKWIDOWBAR_NO = 0;
@@ -209,14 +210,7 @@ public class SinglePanel extends JPanel {
             public void actionPerformed(ActionEvent ae) {
                 if (BLACKWIDOWBAR_NO == 20) {
                     SCORE = (60 - TIME_COUNTER) * (20 - HULKBAR_NO) * 100;
-
-                    WinnerLbl.setIcon(hulkWinsIcon);
-                    TIME_ENDS = true;
-
-                    ScoreAmountLbl.setText("" + SCORE);
-                    ScoreIconLbl.setIcon(scoreIcon);
-                    BackLbl.setIcon(backIcon);
-
+                    endGame(hulkWinsIcon, SCORE);
                 } else {
                     checkHulkHit();
                     if (HULK_HIT) {
@@ -234,13 +228,7 @@ public class SinglePanel extends JPanel {
             public void actionPerformed(ActionEvent ae) {
                 if (HULKBAR_NO == 20) {
                     SCORE = (60 - TIME_COUNTER) * (20 - BLACKWIDOWBAR_NO) * 100;
-
-                    WinnerLbl.setIcon(blackwidowWinsIcon);
-                    TIME_ENDS = true;
-
-                    ScoreAmountLbl.setText("" + SCORE);
-                    ScoreIconLbl.setIcon(scoreIcon);
-                    BackLbl.setIcon(backIcon);
+                    endGame(blackwidowWinsIcon, SCORE);
                 } else {
                     checkBlackwidowHit();
 
@@ -259,28 +247,16 @@ public class SinglePanel extends JPanel {
 
                 if (TIME_ENDS == true) {
                     if (HULKBAR_NO > BLACKWIDOWBAR_NO) {
-                        WinnerLbl.setIcon(blackwidowWinsIcon);
-
                         SCORE = (20 - BLACKWIDOWBAR_NO) * 100;
-
-                        ScoreAmountLbl.setText("" + SCORE);
-                        ScoreIconLbl.setIcon(scoreIcon);
-                        BackLbl.setIcon(backIcon);
+                        endGame(blackwidowWinsIcon, SCORE);
 
                     } else if (HULKBAR_NO < BLACKWIDOWBAR_NO) {
-                        WinnerLbl.setIcon(hulkWinsIcon);
-
                         SCORE = (20 - HULKBAR_NO) * 100;
-
-                        ScoreAmountLbl.setText("" + SCORE);
-                        ScoreIconLbl.setIcon(scoreIcon);
-                        BackLbl.setIcon(backIcon);
+                        endGame(hulkWinsIcon, SCORE);
 
                     } else {
-                        WinnerLbl.setIcon(drawIcon);
-                        BackLbl.setIcon(backIcon);
                         SCORE = 0;
-
+                        endGame(drawIcon, SCORE);
                     }
                 }
 
@@ -368,8 +344,7 @@ public class SinglePanel extends JPanel {
             public void actionPerformed(ActionEvent ae) {
                 if (HULKBAR_NO == 7) {
                     i7++;
-                }
-                else if (HULKBAR_NO == 14) {
+                } else if (HULKBAR_NO == 14) {
                     i14++;
                 } else {
                     hulkAngrySoundPlayed = false;
@@ -397,13 +372,9 @@ public class SinglePanel extends JPanel {
             public void mouseClicked(MouseEvent me) {
 
                 try {
-                    addScore(SCORE);
-                    Arrays.sort(HIGHSCORES);
-
                     gameFrame.remove(SinglePanel.this);
                     MainMenuPanel mp = new MainMenuPanel();
                     gameFrame.showPanel(mp);
-                    stopTimers();
                 } catch (IOException ex) {
                     Logger.getLogger(HighScorePanel.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -525,7 +496,7 @@ public class SinglePanel extends JPanel {
         }
 
     }
-    
+
     private void stopTimers() {
         timer_util.cancel();
         timer.stop();
@@ -534,6 +505,19 @@ public class SinglePanel extends JPanel {
         timer4.stop();
         timer5.stop();
         movingBW.stop();
+    }
+
+    private void endGame(ImageIcon winner, int score) {
+        WinnerLbl.setIcon(winner);
+        BackLbl.setIcon(backIcon);
+        if (score != 0 && winner != drawIcon) {
+            TIME_ENDS = true;
+            ScoreAmountLbl.setText("" + score);
+            ScoreIconLbl.setIcon(scoreIcon);
+            addScore(SCORE);
+            Arrays.sort(HIGHSCORES);
+        }
+        stopTimers();
     }
 
     class Hto1 extends TimerTask {
