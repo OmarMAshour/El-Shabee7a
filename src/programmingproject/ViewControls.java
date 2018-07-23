@@ -19,16 +19,17 @@ public class ViewControls extends JPanel {
 
     public ViewControls() throws IOException {
         backgroundLbl = new JLabel(new ImageIcon("ViewControls.jpg"));
-        backgroundLbl.setBounds(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
-
-        setLayout(new BorderLayout());
-
+        setLayout(null);
         BKlogo = new ImageIcon("Back1.png");
         BKlogo2 = new ImageIcon("Back.png");
         BKimgLabel = new JLabel();
         BKimgLabel.setIcon(BKlogo);
-        BKimgLabel.setBorder(new EmptyBorder(20, 20, 20, 20));
-        add(BKimgLabel, BorderLayout.SOUTH);
+        
+        backgroundLbl.setBounds(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
+        BKimgLabel.setBounds(20, (WINDOW_HEIGHT) - 139, 272, 119);
+
+        
+        add(BKimgLabel);
         add(backgroundLbl);
         
 
