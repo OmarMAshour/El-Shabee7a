@@ -15,10 +15,10 @@ public class HighScorePanel extends JPanel {
     private final JLabel backgroundLbl;
 
     public HighScorePanel() {
-        backgroundLbl = new JLabel(new ImageIcon("HighScoresBackground2.jpg"));
+        backgroundLbl = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("resources/HighScoresBackground2.jpg")));
 
-        BKlogo = new ImageIcon("Back1.png");
-        BKlogo2 = new ImageIcon("Back.png");
+        BKlogo = new ImageIcon(getClass().getClassLoader().getResource("resources/Back1.png"));
+        BKlogo2 = new ImageIcon(getClass().getClassLoader().getResource("resources/Back.png"));
         BKimgLabel = new JLabel();
         BKimgLabel.setIcon(BKlogo);
         setLayout(null);

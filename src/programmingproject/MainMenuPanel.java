@@ -46,7 +46,7 @@ public class MainMenuPanel extends JPanel {
 
         // play main menu song
         final JFXPanel fxPanel = new JFXPanel();
-        String bip = "1.mp3";
+        String bip = "src/resources/1.mp3";
         Media hit = new Media(new File(bip).toURI().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(hit);
         mediaPlayer.play();
@@ -72,7 +72,7 @@ public class MainMenuPanel extends JPanel {
             public void mouseClicked(MouseEvent me) {
                 multi = false;
                 try {
-                    InputStream in = new FileInputStream("Menu_Select.wav");
+                    InputStream in = new FileInputStream("src/resources/Menu_Select.wav");
                     AudioStream audioStream = new AudioStream(in);
                     AudioPlayer.player.start(audioStream);
                     setVisible(false);
@@ -89,7 +89,7 @@ public class MainMenuPanel extends JPanel {
                 try {
 
                     singlePlayerLbl.setIcon(singlePlayerIcon_enlarged);
-                    InputStream in = new FileInputStream("Menu_Mouse_Entered.wav");
+                    InputStream in = new FileInputStream("src/resources/Menu_Mouse_Entered.wav");
 
                     // create an audiostream from the inputstream
                     AudioStream audioStream = new AudioStream(in);
@@ -111,7 +111,7 @@ public class MainMenuPanel extends JPanel {
                 try {
                     singlePlayerLbl.setIcon(singlePlayerIcon);
 
-                    InputStream in = new FileInputStream("Menu_Mouse_Exited.wav");
+                    InputStream in = new FileInputStream("src/resources/Menu_Mouse_Exited.wav");
 
                     // create an audiostream from the inputstream
                     AudioStream audioStream = new AudioStream(in);
@@ -134,7 +134,7 @@ public class MainMenuPanel extends JPanel {
             public void mouseClicked(MouseEvent me) {
                 multi = true;
                 try {
-                    InputStream in = new FileInputStream("Menu_Select.wav");
+                    InputStream in = new FileInputStream("src/resources/Menu_Select.wav");
                     AudioStream audioStream = new AudioStream(in);
                     AudioPlayer.player.start(audioStream);
                     setVisible(false);
@@ -150,7 +150,7 @@ public class MainMenuPanel extends JPanel {
                 try {
 
                     multiPlayerLbl.setIcon(multiPlayerIcon_enlarged);
-                    InputStream in = new FileInputStream("Menu_Mouse_Entered.wav");
+                    InputStream in = new FileInputStream("src/resources/Menu_Mouse_Entered.wav");
 
                     // create an audiostream from the inputstream
                     AudioStream audioStream = new AudioStream(in);
@@ -172,7 +172,7 @@ public class MainMenuPanel extends JPanel {
                 try {
                     multiPlayerLbl.setIcon(multiPlayerIcon);
 
-                    InputStream in = new FileInputStream("Menu_Mouse_Exited.wav");
+                    InputStream in = new FileInputStream("src/resources/Menu_Mouse_Exited.wav");
 
                     // create an audiostream from the inputstream
                     AudioStream audioStream = new AudioStream(in);
@@ -194,7 +194,7 @@ public class MainMenuPanel extends JPanel {
             @Override
             public void mouseClicked(MouseEvent me) {
                 try {
-                    InputStream in = new FileInputStream("Menu_Select.wav");
+                    InputStream in = new FileInputStream("src/resources/Menu_Select.wav");
                     AudioStream audioStream = new AudioStream(in);
                     AudioPlayer.player.start(audioStream);
                     ViewControls vc = new ViewControls();
@@ -210,7 +210,7 @@ public class MainMenuPanel extends JPanel {
                 try {
 
                     viewControlsLbl.setIcon(optionsIcon_enlarged);
-                    InputStream in = new FileInputStream("Menu_Mouse_Entered.wav");
+                    InputStream in = new FileInputStream("src/resources/Menu_Mouse_Entered.wav");
 
                     // create an audiostream from the inputstream
                     AudioStream audioStream = new AudioStream(in);
@@ -232,7 +232,7 @@ public class MainMenuPanel extends JPanel {
                 try {
                     viewControlsLbl.setIcon(optionsIcon);
 
-                    InputStream in = new FileInputStream("Menu_Mouse_Exited.wav");
+                    InputStream in = new FileInputStream("src/resources/Menu_Mouse_Exited.wav");
 
                     // create an audiostream from the inputstream
                     AudioStream audioStream = new AudioStream(in);
@@ -254,7 +254,7 @@ public class MainMenuPanel extends JPanel {
             @Override
             public void mouseClicked(MouseEvent me) {
                 try {
-                    InputStream in = new FileInputStream("Menu_Select.wav");
+                    InputStream in = new FileInputStream("src/resources/Menu_Select.wav");
                     AudioStream audioStream = new AudioStream(in);
                     AudioPlayer.player.start(audioStream);
                     HighScorePanel hsw = new HighScorePanel();
@@ -271,7 +271,7 @@ public class MainMenuPanel extends JPanel {
                 try {
 
                     highScoresLbl.setIcon(highScoresIcon_enlarged);
-                    InputStream in = new FileInputStream("Menu_Mouse_Entered.wav");
+                    InputStream in = new FileInputStream("src/resources/Menu_Mouse_Entered.wav");
 
                     // create an audiostream from the inputstream
                     AudioStream audioStream = new AudioStream(in);
@@ -293,7 +293,7 @@ public class MainMenuPanel extends JPanel {
                 try {
                     highScoresLbl.setIcon(highScoresIcon);
 
-                    InputStream in = new FileInputStream("Menu_Mouse_Exited.wav");
+                    InputStream in = new FileInputStream("src/resources/Menu_Mouse_Exited.wav");
 
                     // create an audiostream from the inputstream
                     AudioStream audioStream = new AudioStream(in);
@@ -315,7 +315,7 @@ public class MainMenuPanel extends JPanel {
             @Override
             public void mouseClicked(MouseEvent me) {
                 try {
-                    InputStream in = new FileInputStream("Menu_Select.wav");
+                    InputStream in = new FileInputStream("src/resources/Menu_Select.wav");
                     AudioStream audioStream = new AudioStream(in);
                     AudioPlayer.player.start(audioStream);
 
@@ -333,7 +333,7 @@ public class MainMenuPanel extends JPanel {
                 try {
 
                     exitLbl.setIcon(exitIcon_enlarged);
-                    InputStream in = new FileInputStream("Menu_Mouse_Entered.wav");
+                    InputStream in = new FileInputStream("src/resources/Menu_Mouse_Entered.wav");
 
                     // create an audiostream from the inputstream
                     AudioStream audioStream = new AudioStream(in);
@@ -355,7 +355,7 @@ public class MainMenuPanel extends JPanel {
                 try {
                     exitLbl.setIcon(exitIcon);
 
-                    InputStream in = new FileInputStream("Menu_Mouse_Exited.wav");
+                    InputStream in = new FileInputStream("src/resources/Menu_Mouse_Exited.wav");
 
                     // create an audiostream from the inputstream
                     AudioStream audioStream = new AudioStream(in);
@@ -387,7 +387,7 @@ public class MainMenuPanel extends JPanel {
 
         logoLbl = new JLabel();
         try {
-            logoIcon = new ImageIcon("Logo.png");
+            logoIcon = new ImageIcon(getClass().getClassLoader().getResource("resources/Logo.png"));
             logoLbl.setIcon(logoIcon);
         } catch (Exception e) {
             System.out.println("Exception in loading logoIcon");
@@ -395,7 +395,7 @@ public class MainMenuPanel extends JPanel {
 
         singlePlayerLbl = new JLabel();
         try {
-            singlePlayerIcon = new ImageIcon("SinglePlayer.png");
+            singlePlayerIcon = new ImageIcon(getClass().getClassLoader().getResource("resources/SinglePlayer.png"));
             singlePlayerLbl.setIcon(singlePlayerIcon);
         } catch (Exception e) {
             System.out.println("Exception in loading singlePlayerIcon");
@@ -403,7 +403,7 @@ public class MainMenuPanel extends JPanel {
 
         multiPlayerLbl = new JLabel();
         try {
-            multiPlayerIcon = new ImageIcon("MultiPlayer.png");
+            multiPlayerIcon = new ImageIcon(getClass().getClassLoader().getResource("resources/MultiPlayer.png"));
             multiPlayerLbl.setIcon(multiPlayerIcon);
         } catch (Exception e) {
             System.out.println("Exception in loading multiPlayerIcon");
@@ -411,7 +411,7 @@ public class MainMenuPanel extends JPanel {
 
         highScoresLbl = new JLabel();
         try {
-            highScoresIcon = new ImageIcon("HighScores.png");
+            highScoresIcon = new ImageIcon(getClass().getClassLoader().getResource("resources/HighScores.png"));
             highScoresLbl.setIcon(highScoresIcon);
         } catch (Exception e) {
             System.out.println("Exception in loading highScoresIcon");
@@ -419,7 +419,7 @@ public class MainMenuPanel extends JPanel {
 
         viewControlsLbl = new JLabel();
         try {
-            optionsIcon = new ImageIcon("Options.png");
+            optionsIcon = new ImageIcon(getClass().getClassLoader().getResource("resources/Options.png"));
             viewControlsLbl.setIcon(optionsIcon);
         } catch (Exception e) {
             System.out.println("Exception in loading optionsIcon");
@@ -427,17 +427,17 @@ public class MainMenuPanel extends JPanel {
 
         exitLbl = new JLabel();
         try {
-            exitIcon = new ImageIcon("EXIT.png");
+            exitIcon = new ImageIcon(getClass().getClassLoader().getResource("resources/EXIT.png"));
             exitLbl.setIcon(exitIcon);
         } catch (Exception e) {
             System.out.println("Exception in loading exitIcon");
         }
-        backgroundLbl = new JLabel(new ImageIcon("Background_MainWindow.jpg"));
-        singlePlayerIcon_enlarged = new ImageIcon("Single2.png");
-        multiPlayerIcon_enlarged = new ImageIcon("Mult2.png");
-        highScoresIcon_enlarged = new ImageIcon("HighScores2.png");
-        optionsIcon_enlarged = new ImageIcon("Options2.png");
-        exitIcon_enlarged = new ImageIcon("EXIT2.png");
+        backgroundLbl = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("resources/Background_MainWindow.jpg")));
+        singlePlayerIcon_enlarged = new ImageIcon(getClass().getClassLoader().getResource("resources/Single2.png"));
+        multiPlayerIcon_enlarged = new ImageIcon(getClass().getClassLoader().getResource("resources/Mult2.png"));
+        highScoresIcon_enlarged = new ImageIcon(getClass().getClassLoader().getResource("resources/HighScores2.png"));
+        optionsIcon_enlarged = new ImageIcon(getClass().getClassLoader().getResource("resources/Options2.png"));
+        exitIcon_enlarged = new ImageIcon(getClass().getClassLoader().getResource("resources/EXIT2.png"));
 
     }
 }

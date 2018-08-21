@@ -22,7 +22,7 @@ public class IntroPanel extends JPanel {
 
     public static MainMenuPanel mp;
     public IntroPanel() throws InterruptedException, IOException {
-        add(new JLabel(new ImageIcon("Logo.gif")));
+        add(new JLabel(new ImageIcon(getClass().getClassLoader().getResource("resources/Logo.gif"))));
         
         new java.util.Timer().schedule(new java.util.TimerTask() {
             @Override

@@ -26,18 +26,18 @@ public class Timers {
     int c;
 
     public Timers() throws IOException {
-        RightCounter[0] = LeftCounter[0] = ImageIO.read(new File("0.png"));
-        RightCounter[1] = LeftCounter[1] = ImageIO.read(new File("1.png"));
-        RightCounter[2] = LeftCounter[2] = ImageIO.read(new File("2.png"));
-        RightCounter[3] = LeftCounter[3] = ImageIO.read(new File("3.png"));
-        RightCounter[4] = LeftCounter[4] = ImageIO.read(new File("4.png"));
-        RightCounter[5] = LeftCounter[5] = ImageIO.read(new File("5.png"));
-        RightCounter[6] = LeftCounter[6] = ImageIO.read(new File("6.png"));
-        RightCounter[7] = ImageIO.read(new File("7.png"));
-        RightCounter[8] = ImageIO.read(new File("8.png"));
-        RightCounter[9] = ImageIO.read(new File("9.png"));
-        RightTemp = ImageIO.read(new File("0.png"));
-        LeftTemp = ImageIO.read(new File("6.png"));
+        RightCounter[0] = LeftCounter[0] = ImageIO.read(new File("src/resources/0.png"));
+        RightCounter[1] = LeftCounter[1] = ImageIO.read(new File("src/resources/1.png"));
+        RightCounter[2] = LeftCounter[2] = ImageIO.read(new File("src/resources/2.png"));
+        RightCounter[3] = LeftCounter[3] = ImageIO.read(new File("src/resources/3.png"));
+        RightCounter[4] = LeftCounter[4] = ImageIO.read(new File("src/resources/4.png"));
+        RightCounter[5] = LeftCounter[5] = ImageIO.read(new File("src/resources/5.png"));
+        RightCounter[6] = LeftCounter[6] = ImageIO.read(new File("src/resources/6.png"));
+        RightCounter[7] = ImageIO.read(new File("src/resources/7.png"));
+        RightCounter[8] = ImageIO.read(new File("src/resources/8.png"));
+        RightCounter[9] = ImageIO.read(new File("src/resources/9.png"));
+        RightTemp = ImageIO.read(new File("src/resources/0.png"));
+        LeftTemp = ImageIO.read(new File("src/resources/6.png"));
 
         R = 0;
         L = 6;

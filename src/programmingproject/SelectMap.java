@@ -30,17 +30,17 @@ public class SelectMap extends JPanel {
     private ImageIcon PyramidsIcon2;
 
     public SelectMap() {
-        backgroundLbl = new JLabel(new ImageIcon("SelectMap.jpg"));
-        BKlogo = new ImageIcon("Back1.png");
-        BKlogo2 = new ImageIcon("Back.png");
+        backgroundLbl = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("resources/SelectMap.jpg")));
+        BKlogo = new ImageIcon(getClass().getClassLoader().getResource("resources/Back1.png"));
+        BKlogo2 = new ImageIcon(getClass().getClassLoader().getResource("resources/Back.png"));
         BKimgLabel = new JLabel();
         BKimgLabel.setIcon(BKlogo);
-        ASUicon1 = new ImageIcon("ASUlogo1.png");
-        ASUicon2 = new ImageIcon("ASUlogo2.png");
+        ASUicon1 = new ImageIcon(getClass().getClassLoader().getResource("resources/ASUlogo1.png"));
+        ASUicon2 = new ImageIcon(getClass().getClassLoader().getResource("resources/ASUlogo2.png"));
         ASUlabel = new JLabel();
         ASUlabel.setIcon(ASUicon1);
-        PyramidsIcon1 = new ImageIcon("PyramidsLogo1.png");
-        PyramidsIcon2 = new ImageIcon("PyramidsLogo2.png");
+        PyramidsIcon1 = new ImageIcon(getClass().getClassLoader().getResource("resources/PyramidsLogo1.png"));
+        PyramidsIcon2 = new ImageIcon(getClass().getClassLoader().getResource("resources/PyramidsLogo2.png"));
         PyramidsLabel = new JLabel();
         PyramidsLabel.setIcon(PyramidsIcon1);
 

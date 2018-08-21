@@ -1,11 +1,9 @@
 package programmingproject;
 
-import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
 import static programmingproject.ProgrammingProject.WINDOW_HEIGHT;
 import static programmingproject.ProgrammingProject.WINDOW_WIDTH;
 import static programmingproject.ProgrammingProject.gameFrame;
@@ -18,10 +16,10 @@ public class ViewControls extends JPanel {
     private final JLabel backgroundLbl;
 
     public ViewControls() throws IOException {
-        backgroundLbl = new JLabel(new ImageIcon("ViewControls.jpg"));
+        backgroundLbl = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("resources/ViewControls.jpg")));
         setLayout(null);
-        BKlogo = new ImageIcon("Back1.png");
-        BKlogo2 = new ImageIcon("Back.png");
+        BKlogo = new ImageIcon(getClass().getClassLoader().getResource("resources/Back1.png"));
+        BKlogo2 = new ImageIcon(getClass().getClassLoader().getResource("resources/Back.png"));
         BKimgLabel = new JLabel();
         BKimgLabel.setIcon(BKlogo);
         

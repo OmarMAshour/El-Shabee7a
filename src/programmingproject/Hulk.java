@@ -54,28 +54,28 @@ public class Hulk {
         this.hulkstate = 0;
         hulkMotioncount = 0;
 
-        hulkImage0 = ImageIO.read(new File("HULK_0.png"));
+        hulkImage0 = ImageIO.read(new File("src/resources/HULK_0.png"));
 
-        hulkImage2a = ImageIO.read(new File("HULK_2a.png"));
-        hulkImage2b = ImageIO.read(new File("HULK_2b.png"));
-        hulkImage1 = ImageIO.read(new File("HULK_1a.png"));
-        hulkImage3a = ImageIO.read(new File("HULK_3a.png"));
-        hulkImage3b = ImageIO.read(new File("HULK_3b.png"));
-        hulkImage3c = ImageIO.read(new File("HULK_3c.png"));
-        hulkImage4a = ImageIO.read(new File("HULK_4a.png"));
-        hulkImage4b = ImageIO.read(new File("HULK_4b.png"));
+        hulkImage2a = ImageIO.read(new File("src/resources/HULK_2a.png"));
+        hulkImage2b = ImageIO.read(new File("src/resources/HULK_2b.png"));
+        hulkImage1 = ImageIO.read(new File("src/resources/HULK_1a.png"));
+        hulkImage3a = ImageIO.read(new File("src/resources/HULK_3a.png"));
+        hulkImage3b = ImageIO.read(new File("src/resources/HULK_3b.png"));
+        hulkImage3c = ImageIO.read(new File("src/resources/HULK_3c.png"));
+        hulkImage4a = ImageIO.read(new File("src/resources/HULK_4a.png"));
+        hulkImage4b = ImageIO.read(new File("src/resources/HULK_4b.png"));
 
         temp = hulkImage1;
 
-        hulkImage0INV = ImageIO.read(new File("HULK_0_inv.png"));
-        hulkImage1INV = ImageIO.read(new File("HULK_1a_inv.png"));
-        hulkImage2aINV = ImageIO.read(new File("HULK_2a_inv.png"));
-        hulkImage2bINV = ImageIO.read(new File("HULK_2b_inv.png"));
-        hulkImage3aINV = ImageIO.read(new File("HULK_3a_inv.png"));
-        hulkImage3bINV = ImageIO.read(new File("HULK_3b_inv.png"));
-        hulkImage3cINV = ImageIO.read(new File("HULK_3c_inv.png"));
-        hulkImage4aINV = ImageIO.read(new File("HULK_4a_inv.png"));
-        hulkImage4bINV = ImageIO.read(new File("HULK_4b_inv.png"));
+        hulkImage0INV = ImageIO.read(new File("src/resources/HULK_0_inv.png"));
+        hulkImage1INV = ImageIO.read(new File("src/resources/HULK_1a_inv.png"));
+        hulkImage2aINV = ImageIO.read(new File("src/resources/HULK_2a_inv.png"));
+        hulkImage2bINV = ImageIO.read(new File("src/resources/HULK_2b_inv.png"));
+        hulkImage3aINV = ImageIO.read(new File("src/resources/HULK_3a_inv.png"));
+        hulkImage3bINV = ImageIO.read(new File("src/resources/HULK_3b_inv.png"));
+        hulkImage3cINV = ImageIO.read(new File("src/resources/HULK_3c_inv.png"));
+        hulkImage4aINV = ImageIO.read(new File("src/resources/HULK_4a_inv.png"));
+        hulkImage4bINV = ImageIO.read(new File("src/resources/HULK_4b_inv.png"));
 
     }
 
@@ -459,7 +459,7 @@ public class Hulk {
         LEFT = false;
         if (getImage() == hulkImage1 || getImage() == hulkImage2a || getImage() == hulkImage2b) {
             setImage(hulkImage4a);
-            InputStream in = new FileInputStream("AngryVoice.wav");
+            InputStream in = new FileInputStream("src/resources/AngryVoice.wav");
             AudioStream audioStream2 = new AudioStream(in);
             AudioPlayer.player.start(audioStream2);
             timer.schedule(new to4b(), 500);

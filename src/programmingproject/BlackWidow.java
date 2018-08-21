@@ -64,31 +64,31 @@ public class BlackWidow {
         blackwidowstate = 0;
         blackwidowMotioncount = 0;
 
-        blackwidowImage0 = ImageIO.read(new File("BW_0.png"));
-        blackwidowImage1 = ImageIO.read(new File("BW_1.png"));
-        blackwidowImage2a = ImageIO.read(new File("BW_2a.png"));
-        blackwidowImage2b = ImageIO.read(new File("BW_2b.png"));
-        blackwidowImage3a = ImageIO.read(new File("BW_3a.png"));
-        blackwidowImage3b = ImageIO.read(new File("BW_3b.png"));
-        blackwidowImage3c = ImageIO.read(new File("BW_3c.png"));
-        blackwidowImage4a = ImageIO.read(new File("BW_4a.png"));
-        blackwidowImage4b = ImageIO.read(new File("BW_4b.png"));
-        blackwidowImage5a = ImageIO.read(new File("BW_5a.png"));
-        blackwidowImage5b = ImageIO.read(new File("BW_5b.png"));
-        blackwidowImage5c = ImageIO.read(new File("BW_5c.png"));
+        blackwidowImage0 = ImageIO.read(new File("src/resources/BW_0.png"));
+        blackwidowImage1 = ImageIO.read(new File("src/resources/BW_1.png"));
+        blackwidowImage2a = ImageIO.read(new File("src/resources/BW_2a.png"));
+        blackwidowImage2b = ImageIO.read(new File("src/resources/BW_2b.png"));
+        blackwidowImage3a = ImageIO.read(new File("src/resources/BW_3a.png"));
+        blackwidowImage3b = ImageIO.read(new File("src/resources/BW_3b.png"));
+        blackwidowImage3c = ImageIO.read(new File("src/resources/BW_3c.png"));
+        blackwidowImage4a = ImageIO.read(new File("src/resources/BW_4a.png"));
+        blackwidowImage4b = ImageIO.read(new File("src/resources/BW_4b.png"));
+        blackwidowImage5a = ImageIO.read(new File("src/resources/BW_5a.png"));
+        blackwidowImage5b = ImageIO.read(new File("src/resources/BW_5b.png"));
+        blackwidowImage5c = ImageIO.read(new File("src/resources/BW_5c.png"));
 
-        blackwidowImage0INV = ImageIO.read(new File("BW_INV_0.png"));
-        blackwidowImage1INV = ImageIO.read(new File("BW_INV_1.png"));
-        blackwidowImage2aINV = ImageIO.read(new File("BW_INV_2a.png"));
-        blackwidowImage2bINV = ImageIO.read(new File("BW_INV_2b.png"));
-        blackwidowImage3aINV = ImageIO.read(new File("BW_INV_3a.png"));
-        blackwidowImage3bINV = ImageIO.read(new File("BW_INV_3b.png"));
-        blackwidowImage3cINV = ImageIO.read(new File("BW_INV_3c.png"));
-        blackwidowImage4aINV = ImageIO.read(new File("BW_INV_4a.png"));
-        blackwidowImage4bINV = ImageIO.read(new File("BW_INV_4b.png"));
-        blackwidowImage5aINV = ImageIO.read(new File("BW_INV_5a.png"));
-        blackwidowImage5bINV = ImageIO.read(new File("BW_INV_5b.png"));
-        blackwidowImage5cINV = ImageIO.read(new File("BW_INV_5c.png"));
+        blackwidowImage0INV = ImageIO.read(new File("src/resources/BW_INV_0.png"));
+        blackwidowImage1INV = ImageIO.read(new File("src/resources/BW_INV_1.png"));
+        blackwidowImage2aINV = ImageIO.read(new File("src/resources/BW_INV_2a.png"));
+        blackwidowImage2bINV = ImageIO.read(new File("src/resources/BW_INV_2b.png"));
+        blackwidowImage3aINV = ImageIO.read(new File("src/resources/BW_INV_3a.png"));
+        blackwidowImage3bINV = ImageIO.read(new File("src/resources/BW_INV_3b.png"));
+        blackwidowImage3cINV = ImageIO.read(new File("src/resources/BW_INV_3c.png"));
+        blackwidowImage4aINV = ImageIO.read(new File("src/resources/BW_INV_4a.png"));
+        blackwidowImage4bINV = ImageIO.read(new File("src/resources/BW_INV_4b.png"));
+        blackwidowImage5aINV = ImageIO.read(new File("src/resources/BW_INV_5a.png"));
+        blackwidowImage5bINV = ImageIO.read(new File("src/resources/BW_INV_5b.png"));
+        blackwidowImage5cINV = ImageIO.read(new File("src/resources/BW_INV_5c.png"));
 
         temp = blackwidowImage1INV;
 
@@ -502,14 +502,14 @@ public class BlackWidow {
         A = false;
         if (getImage() == blackwidowImage1 || getImage() == blackwidowImage2a || getImage() == blackwidowImage2b) {
             setImage(blackwidowImage4a);
-            InputStream in = new FileInputStream("FemaleAttack.wav");
+            InputStream in = new FileInputStream("src/resources/FemaleAttack.wav");
             AudioStream audioStream2 = new AudioStream(in);
             AudioPlayer.player.start(audioStream2);
             timer.schedule(new to4b(), 500);
             timer.schedule(new to1(), 1000);
         } else if (getImage() == blackwidowImage1INV || getImage() == blackwidowImage2aINV || getImage() == blackwidowImage2bINV) {
             setImage(blackwidowImage4aINV);
-            InputStream in = new FileInputStream("FemaleAttack.wav");
+            InputStream in = new FileInputStream("src/resources/FemaleAttack.wav");
             AudioStream audioStream2 = new AudioStream(in);
             AudioPlayer.player.start(audioStream2);
             timer.schedule(new to4bI(), 500);

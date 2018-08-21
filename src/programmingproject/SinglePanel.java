@@ -60,11 +60,11 @@ public class SinglePanel extends JPanel {
 
         BackLbl = new JLabel();
 
-        blackwidowWinsIcon = new ImageIcon("BWwins.png");
-        hulkWinsIcon = new ImageIcon("HulkWins.png");
-        drawIcon = new ImageIcon("Draw.png");
-        scoreIcon = new ImageIcon("Score.png");
-        backIcon = new ImageIcon("Back1.png");
+        blackwidowWinsIcon = new ImageIcon(getClass().getClassLoader().getResource("resources/BWwins.png"));
+        hulkWinsIcon = new ImageIcon(getClass().getClassLoader().getResource("resources/HulkWins.png"));
+        drawIcon = new ImageIcon(getClass().getClassLoader().getResource("resources/Draw.png"));
+        scoreIcon = new ImageIcon(getClass().getClassLoader().getResource("resources/Score.png"));
+        backIcon = new ImageIcon(getClass().getClassLoader().getResource("resources/Back1.png"));
 
         SCORE = 0;
         TIME_ENDS = false;
@@ -85,9 +85,9 @@ public class SinglePanel extends JPanel {
         bkHolder = new JLabel();
         if (ASU_BACKGROUND == true) {
 
-            background = new ImageIcon("ASU.jpg");
+            background = new ImageIcon(getClass().getClassLoader().getResource("resources/ASU.jpg"));
             try {
-                InputStream in = new FileInputStream("Voice_023.wav");
+                InputStream in = new FileInputStream("src/resources/Voice_023.wav");
 
                 AudioStream audioStream = new AudioStream(in);
 
@@ -97,9 +97,9 @@ public class SinglePanel extends JPanel {
                 System.out.println("Error with playing sound.");
             }
         } else {
-            background = new ImageIcon("pyramid-wallpaper-1.jpg");
+            background = new ImageIcon(getClass().getClassLoader().getResource("resources/pyramid-wallpaper-1.jpg"));
             try {
-                InputStream in = new FileInputStream("Voice_022.wav");
+                InputStream in = new FileInputStream("src/resources/Voice_022.wav");
 
                 AudioStream audioStream = new AudioStream(in);
 
@@ -352,7 +352,7 @@ public class SinglePanel extends JPanel {
                 if ((i7 == 1 || i14 == 1) && !hulkAngrySoundPlayed) {
                     try {
                         hulkAngrySoundPlayed = true;
-                        InputStream in = new FileInputStream("Hulk is Angry.wav");
+                        InputStream in = new FileInputStream("src/resources/Hulk is Angry.wav");
                         AudioStream audioStream2 = new AudioStream(in);
                         AudioPlayer.player.start(audioStream2);
                     } catch (FileNotFoundException ex) {
